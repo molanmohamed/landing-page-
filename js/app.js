@@ -23,7 +23,7 @@ let Sections=[...document.querySelectorAll("section")];
 let nav_bar=document.getElementById('navbar__list');
 /**
  * End Global Variables
- * Main Helper Functions
+ * Begin Main Functions
  * 
 */
 
