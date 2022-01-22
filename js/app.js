@@ -63,7 +63,7 @@ window.addEventListener('scroll',()=>{
         let rect=Sections[i].getBoundingClientRect().top;
         //Add and remove class 'your-active-class' when it is near top of viewport
         //Add and remove class 'active' for links when it's appropriate near top of viewport and not collapsed
-       
+        //because in small screens it misbehave 
         if(rect>=0 && rect<=window.innerHeight*0.4){
             Sections[i].classList.add('your-active-class');
             if(Sections[i].querySelectorAll('p')[0].style.display!='none'){
