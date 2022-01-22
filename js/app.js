@@ -62,15 +62,19 @@ window.addEventListener('scroll',()=>{
         //get section top
         let rect=Sections[i].getBoundingClientRect().top;
         //Add and remove class 'your-active-class' when it is near top of viewport
-        //Add and remove class 'active' for links when it's appropriate near top of viewport
+        //Add and remove class 'active' for links when it's appropriate near top of viewport and not collapsed
+       
         if(rect>=0 && rect<=window.innerHeight*0.4){
             Sections[i].classList.add('your-active-class');
-            Links[i].classList.add('active');
-        }else{
+            if(Sections[i].querySelectorAll('p')[0].style.display!='none'){
+               Links[i].classList.add('active');
+            }
+        }
+        else{
             Sections[i].classList.remove('your-active-class');
             Links[i].classList.remove('active');
         }
-    }   
+    }
 });
 
 // Scroll to anchor ID using scrollIntoView 
