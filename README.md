@@ -15,7 +15,8 @@ of the page sections. The navigation bar dynamically adds all the sections of th
 1. Dynamic navigation bar. 
 2. Highlight the appropriate section when it comes in the viewport.
 3. All of its features are responsive and usable across phones ,tablets and desktop.
-4. Scroll smoothly to the  appropriate section when click on it in the navigation bar. 
+4. Scroll smoothly to the  appropriate section when click on it in the navigation bar.
+5. collapse button to expand and collapse each section of the page 
 
 ## Usage
 HTML landing page ready to use on different devices and with a navigation bar adapt dynamically to the content in the page.
