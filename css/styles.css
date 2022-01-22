@@ -20,6 +20,8 @@ body {
 
 
 /* Typeography General*/
+
+
 h1 {
     font-family: 'Fira Sans', sans-serif;
     font-size: 3em;
@@ -57,9 +59,11 @@ main {
 
 section {
     position: relative;
-    min-height: 80vh;
+    min-height: 20vh;
 }
-
+a {
+    color:inherit;
+}
 
 /* ---- Module Rules ---- */
 
@@ -87,6 +91,7 @@ section {
     color: #fff;
     transition: ease 0.3s all;
 }
+
 
 /* Header Styles */
 .page__header {
@@ -128,7 +133,6 @@ section:nth-of-type(even) .landing__container {
     margin-left: auto;
     text-align: right; 
 }
-
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
 /* Circles appear to be random do to use of :nth-of-type psuedo class */
@@ -174,6 +178,8 @@ section:nth-of-type(3n) .landing__container::after {
     transition: ease 0.5s all;
 }
 
+
+
 section:nth-of-type(3n + 1) .landing__container::after {
     content: '';
     background: rgb(0, 0, 0);
@@ -188,7 +194,14 @@ section:nth-of-type(3n + 1) .landing__container::after {
     opacity: 0;
     transition: ease 0.5s all;
 }
-
+button
+{
+    background: none;
+	color: black;
+	border: none;
+	padding: 0;
+	font: inherit;
+}
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
@@ -207,8 +220,10 @@ section.your-active-class .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
-
-
+.active {
+    background: #333;
+    transition: ease 0.3s all;
+}
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
