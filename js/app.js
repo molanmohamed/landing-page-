@@ -21,12 +21,22 @@
 //gather all the sections in an array 
 let Sections=[...document.querySelectorAll("section")];
 let nav_bar=document.getElementById('navbar__list');
+let collapseBtn=document.querySelectorAll(".collapse");
 /**
  * End Global Variables
- * Begin Main Functions
+ * begin helper Functions
  * 
 */
-
+// this function changes the collapse button inner text  from + to - and vise versa
+function changePtoN(element)
+{
+    (element.innerText=='+')?element.innerText='-':element.innerText='+';
+}
+/**
+ * End helper Functions
+ * begin main Functions
+ * 
+*/
 // build the nav
 
 let CreateNavBar=()=>{
@@ -46,21 +56,22 @@ let CreateNavBar=()=>{
 
 // Add class 'your-active-class' to section when near top of viewport
 
-let AddActive=()=>{
-    for(section of Sections){
+window.addEventListener('scroll',()=>{
+    let Links=document.querySelectorAll('.menu__link');
+    for(let i=0;i<Sections.length;i++){
         //get section top
-        let rect=section.getBoundingClientRect().top;
-        //Add class 'your-active-class' when it is near top of viewport
-        if(rect>=0 && rect<=window.innerHeight*0.4)
-        {
-            section.classList.add('your-active-class');
-        }
-        else
-        {
-        section.classList.remove('your-active-class');
+        let rect=Sections[i].getBoundingClientRect().top;
+        //Add and remove class 'your-active-class' when it is near top of viewport
+        //Add and remove class 'active' for links when it's appropriate near top of viewport
+        if(rect>=0 && rect<=window.innerHeight*0.4){
+            Sections[i].classList.add('your-active-class');
+            Links[i].classList.add('active');
+        }else{
+            Sections[i].classList.remove('your-active-class');
+            Links[i].classList.remove('active');
         }
     }   
-};
+});
 
 // Scroll to anchor ID using scrollIntoView 
 let scrollToSection=()=>{document.querySelectorAll('.menu__link').forEach((link)=>{
@@ -75,17 +86,31 @@ let scrollToSection=()=>{document.querySelectorAll('.menu__link').forEach((link)
 }
 )};
 
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
+for(let i=0;i<collapseBtn.length;i++)
+{
+   //on hover the inner text of the button changes form + to - and vice versa
+    collapseBtn[i].addEventListener('mouseover',()=>{
+        changePtoN(collapseBtn[i])
+    });
+    collapseBtn[i].addEventListener('mouseout',()=>{
+        changePtoN(collapseBtn[i])
+    });
+    //on click the paragraphs in the section collapse by changing its display property form block to hide
+    collapseBtn[i].addEventListener('click',()=>{
+        changePtoN(collapseBtn[i])
+        Sections[i].querySelectorAll('p').forEach((par)=>{
+            if(par.style.display=='none'){
+                par.style.display='block';
+            }else{
+                par.style.display='none';
+            }
+        });
+    });
+}
 
-// Build menu 
+//create navigation bar
 CreateNavBar();
 // Scroll to section on link click
 scrollToSection();
-// Set sections as active
-window.addEventListener('scroll',AddActive);
 
 
